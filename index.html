@@ -1,0 +1,32 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <title>Magic Sauce</title>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/jquery.mcustomscrollbar/3.0.6/jquery.mCustomScrollbar.min.css">
+		<link rel="stylesheet" type="text/css" href="css/codemirror.css">
+		<link rel="stylesheet" type="text/css" href="css/base16-dark.css">
+		<link rel="stylesheet" type="text/css" href="css/main.css">
+    </head>
+    <body>
+	
+
+		<div class="center">
+			<h1 class="title">Magic Sauce</h1>
+			<h3 class="description">Magic Sauce allows you to import all of your fonts and get a result of android strings for your fonts</h3>
+			<label class="select-fonts">
+				Select Fonts
+				<input style="display: none;" type="file" name="MagicPicker" accept=".otf, .ttf" multiple>
+			</label>
+			<div id="codeBox">
+				<textarea id="code" style="display: none;" readonly></textarea>
+			</div>
+		</div>
+
+		<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+		<script src="js/codemirror.js"></script>
+		<script src="js/xml.js"></script>
+		<script src="js/app.js"></script>
+
+		<!-- <string name="ff_clan_ot_black">fonts/FF Clan OT Black.otf</string> -->
+    </body>
+</html>
