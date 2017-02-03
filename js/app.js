@@ -1,25 +1,37 @@
-var code;;
+var xmlCode;
+var cssCode;
 $('input[name=MagicPicker]').change(function() {
 	if($(this).get(0).files.length < 1){
 		return;
 	}
-	$("#code").remove();
+	$('#xml').remove();
+	$('#css').remove();
 	// var textArea = $('<textarea id="code"/>');  
-	$("#codeBox").html($("<textarea>", {id:"code"}));
-	code = $('#code');
-	var finalString = '';
+	$('#codeBox').html('<h5>XML</h5><textarea id="xml"/><h5>CSS</h5><textarea id="css"/>');
+	xmlCode = $('#xml');
+	cssCode = $('#css');
+	var xmlString = '';
+	var cssString = '';
     for (var i = 0; i < $(this).get(0).files.length; ++i) {
-    	var name = $(this).get(0).files[i].name;
-    	// console.log(name)
-        // names.push(name);
-        var newName = name.substr(0, name.indexOf('.')).toLocaleLowerCase().replace(/ /g, '_');
-        finalString += '<string name="' + newName + '">' + 'fonts/' + name + '</string> \n';
+    	var file = $(this).get(0).files[i].name;
+        var name = file.substr(0, file.indexOf('.'))
+        xmlString += '<string name="' + name.toLocaleLowerCase().replace(/ /g, '_') + '">' + 'fonts/' + file + '</string> \n';
+        cssString += '@font-face { \n font-family: ' + name.replace(/ /g, '') + '; \n src: url(' + '../fonts/' + file + ');\n} \n \n';
     }
-    code.val(finalString);
-    CodeMirror.fromTextArea(document.getElementById('code'), {
+    xmlCode.val(xmlString);
+    cssCode.val(cssString);
+    CodeMirror.fromTextArea(document.getElementById('xml'), {
 	    lineNumbers: false,
-	    mode: "xml",
+	    mode: 'xml',
 	    theme: 'base16-dark',
 	    readOnly: true
-		});
+	});
+
+	CodeMirror.fromTextArea(document.getElementById('css'), {
+	    lineNumbers: false,
+	    mode: 'css',
+	    theme: 'base16-dark',
+	    readOnly: true
+	});
+
 })
