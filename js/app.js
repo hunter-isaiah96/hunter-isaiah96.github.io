@@ -16,7 +16,7 @@ $('input[name=MagicPicker]').change(function() {
     	var file = $(this).get(0).files[i].name;
         var name = file.substr(0, file.indexOf('.'))
         xmlString += '<string name="' + name.toLocaleLowerCase().replace(/ /g, '_') + '">' + 'fonts/' + file + '</string> \n';
-        cssString += '@font-face { \n font-family: ' + name.replace(/ /g, '') + '; \n src: url(' + '../fonts/' + file + ');\n} \n \n';
+        cssString += '@font-face { \n font-family: ' + name.replace(/ /g, '') + '; \n src: url("' + '../fonts/' + file + '");\n} \n \n';
     }
     xmlCode.val(xmlString);
     cssCode.val(cssString);
