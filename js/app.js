@@ -15,7 +15,7 @@ $('input[name=MagicPicker]').change(function() {
     for (var i = 0; i < $(this).get(0).files.length; ++i) {
     	var file = $(this).get(0).files[i].name;
         var name = file.substr(0, file.indexOf('.'))
-        xmlString += '<string name="' + name.toLocaleLowerCase().replace(/ /g, '_') + '">' + 'fonts/' + file + '</string> \n';
+        xmlString += '<string name="' + name.toLocaleLowerCase().replace(/ /g, '_').replace('-', '_') + '">' + 'fonts/' + file + '</string> \n';
         cssString += '@font-face { \n font-family: ' + name.replace(/ /g, '') + '; \n src: url("' + '../fonts/' + file + '");\n} \n \n';
     }
     xmlCode.val(xmlString);
@@ -33,5 +33,4 @@ $('input[name=MagicPicker]').change(function() {
 	    theme: 'base16-dark',
 	    readOnly: true
 	});
-
 })
